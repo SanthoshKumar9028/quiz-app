@@ -6,8 +6,9 @@ describe("boolean quiz component", () => {
   it("should render without error", () => {
     const { getByTestId } = render(
       <BooleanQuiz
-        status="normal"
+        status="unanswered"
         text="test question"
+        answer={null}
         handleAnswerChange={() => console.log("test handleer")}
       />
     );
@@ -21,8 +22,9 @@ describe("boolean quiz component", () => {
 
     const { getByLabelText } = render(
       <BooleanQuiz
-        status="normal"
+        status="unanswered"
         text="test question"
+        answer={null}
         handleAnswerChange={myFun}
       />
     );

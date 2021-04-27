@@ -1,39 +1,27 @@
-import { useState } from "react";
-
 interface BooleanQuizNormalProps {
   text: string;
-  status: "normal";
+  status: "unanswered";
+  answer: boolean | null;
   handleAnswerChange(answer: boolean): void;
 }
 interface BooleanQuizAnswerdProps {
   text: string;
-  answer: boolean;
+  answer: boolean | null;
   status: "answered";
 }
 
-type PropsTypes = BooleanQuizAnswerdProps | BooleanQuizNormalProps;
+export type BooleanQuizPropsTypes =
+  | BooleanQuizAnswerdProps
+  | BooleanQuizNormalProps;
 
-function BooleanQuiz(props: PropsTypes) {
-  const [isChecked, setIsChecked] = useState<boolean | null>(null);
-
-  const { text } = props;
-  let isFalseChecked = false;
-  let isTrueChecked = false;
+function BooleanQuiz(props: BooleanQuizPropsTypes) {
+  const { text, answer } = props;
 
   const handleChange = (answer: boolean) => {
-    if (props.status === "normal") {
+    if (props.status === "unanswered") {
       props.handleAnswerChange(answer);
     }
-    setIsChecked(answer);
   };
-
-  if (props.status === "answered") {
-    if (props.answer === true) isTrueChecked = true;
-    else if (props.answer === false) isFalseChecked = true;
-  } else {
-    if (isChecked === true) isTrueChecked = true;
-    else if (isChecked === false) isFalseChecked = true;
-  }
 
   return (
     <div
@@ -47,7 +35,7 @@ function BooleanQuiz(props: PropsTypes) {
             type="radio"
             name={text}
             id={text + "_true"}
-            checked={isTrueChecked}
+            checked={answer === true}
             onChange={() => handleChange(true)}
             disabled={props.status === "answered"}
           />
@@ -59,7 +47,7 @@ function BooleanQuiz(props: PropsTypes) {
             type="radio"
             name={text}
             id={text + "_false"}
-            checked={isFalseChecked}
+            checked={answer === false}
             onChange={() => handleChange(false)}
             disabled={props.status === "answered"}
           />

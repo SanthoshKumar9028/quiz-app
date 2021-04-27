@@ -16,5 +16,5 @@ export interface IState {
   user: {
     score: number;
   };
-  javascript: QuestionTypes[];
+  javascript: { totalQuestions: number; questions: QuestionTypes[] };
 }

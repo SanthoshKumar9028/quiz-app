@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IState } from "../types";
 
 import questions from "./questions";
 
@@ -21,6 +22,22 @@ const javascriptSlice = createSlice({
     },
   },
 });
+
+const questionSelector = (index: number) => {
+  return (state: IState) => {
+    return state.javascript.questions[index];
+  };
+};
+
+const allQuestionSelector = (state: IState) => {
+  return state.javascript.questions;
+};
+
+const questionLengthSelector = (state: IState) => {
+  return state.javascript.totalQuestions;
+};
+
+export { questionSelector, allQuestionSelector, questionLengthSelector };
 
 export const {
   setAnswer: setAnswerActionCreator,
