@@ -10,7 +10,19 @@ export interface IBooleanQuestion {
   userAnswer: null | boolean;
 }
 
-export type QuestionTypes = IBooleanQuestion;
+export interface IMultipleChoiceOption {
+  key: string;
+  value: string;
+}
+export interface IMultipleChoiceQuestion {
+  type: typeof QMULTIPLE_CHOICE;
+  title: string;
+  options: IMultipleChoiceOption[];
+  answer: string;
+  userAnswer: null | string;
+}
+
+export type QuestionTypes = IBooleanQuestion | IMultipleChoiceQuestion;
 
 export interface IState {
   user: {

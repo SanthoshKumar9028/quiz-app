@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { resetAnswerActionCreator } from "../../redux/javascript";
 import { language, allQuestionSelector } from "../../redux";
-import Quiz from "../../components/quiz";
+import BooleanQuiz from "../../components/boolean-quiz";
+import MultiChoiceQuiz from "../../components/multi-choice-quiz";
 
 export interface IFinalizeAnswerProps {
   language: language;
@@ -50,22 +51,41 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
         <span>Skiped Questions : {stats.skipedQuestions} </span>
       </section>
       <ol>
-        {questions.map(({ type, title, userAnswer, answer }) => {
-          return (
-            <li key={title}>
-              <Quiz
-                type={type}
-                rest={{
-                  status: "answered",
-                  text: title,
-                  answer: userAnswer,
-                }}
+        {questions.map((question) => {
+          let comp = null;
+          if (question.type === "QBOOLEAN") {
+            comp = (
+              <BooleanQuiz
+                status="answered"
+                text={question.title}
+                answer={question.answer}
               />
-              <span>Correct : {userAnswer === answer ? "Yes" : "No"}</span>
-              {(userAnswer === null || userAnswer !== answer) && (
+            );
+          } else if (question.type === "QMULTIPLE_CHOICE") {
+            comp = (
+              <MultiChoiceQuiz
+                status="answered"
+                text={question.title}
+                answer={question.answer}
+                options={question.options}
+              />
+            );
+          }
+          return (
+            <li key={question.title}>
+              {comp}
+              <span>
+                Correct :
+                {question.userAnswer === question.answer ? "Yes" : "No"}
+              </span>
+              {question.userAnswer !== question.answer && (
                 <div>
-                  <span>Correct Answer : {convertAnswer(answer)} </span>
-                  <span> Your Answer {convertAnswer(userAnswer)} </span>
+                  <span>Correct Answer : {convertAnswer(question.answer)}</span>
+                  <span>
+                    {question.userAnswer === null
+                      ? "You Skipped this question"
+                      : `Your Answer ${convertAnswer(question.userAnswer)}`}
+                  </span>
                 </div>
               )}
             </li>

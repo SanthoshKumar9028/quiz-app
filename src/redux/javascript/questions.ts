@@ -1,6 +1,26 @@
-import { QuestionTypes, QBOOLEAN } from "../types";
+import { QuestionTypes, QBOOLEAN, QMULTIPLE_CHOICE } from "../types";
 
 const questions: QuestionTypes[] = [
+  {
+    type: QMULTIPLE_CHOICE,
+    title: "Which key word is used to desclare variale in javascript",
+    answer: "let",
+    options: [
+      {
+        key: "let",
+        value: "let",
+      },
+      {
+        key: "int",
+        value: "int",
+      },
+      {
+        key: "variable",
+        value: "variable",
+      },
+    ],
+    userAnswer: null,
+  },
   {
     type: QBOOLEAN,
     title: "JavaScript is a case sencitive language.",

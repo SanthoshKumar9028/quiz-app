@@ -3,7 +3,7 @@ import { IState } from "../types";
 
 import questions from "./questions";
 
-type SetAnswerPayloadType = { index: number; answer: boolean };
+type SetAnswerPayloadType = { index: number; answer: any };
 
 const javascriptSlice = createSlice({
   name: "javascript",

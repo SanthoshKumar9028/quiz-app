@@ -6,8 +6,9 @@ import {
   questionSelector,
   questionLengthSelector,
 } from "../../redux/javascript";
-import Quiz from "../../components/quiz";
+import BooleanQuiz from "../../components/boolean-quiz";
 import FinalizeAnswer from "../finalize-answer";
+import MultiChoiceQuiz from "../../components/multi-choice-quiz";
 
 function JavaScriptQuizs() {
   const [questionNumber, setQuestionNumber] = useState<number>(0);
@@ -23,19 +24,35 @@ function JavaScriptQuizs() {
     return <FinalizeAnswer language="javascript" />;
   }
 
+  const handleAnswerChange = (answer: any) => {
+    dispatch(setAnswerActionCreator({ index: questionNumber, answer }));
+  };
+
+  let comp = null;
+  if (question.type === "QBOOLEAN") {
+    comp = (
+      <BooleanQuiz
+        status="unanswered"
+        text={question.title}
+        answer={question.userAnswer}
+        handleAnswerChange={handleAnswerChange}
+      />
+    );
+  } else if (question.type === "QMULTIPLE_CHOICE") {
+    comp = (
+      <MultiChoiceQuiz
+        status="unanswered"
+        text={question.title}
+        answer={question.userAnswer}
+        options={question.options}
+        handleAnswerChange={handleAnswerChange}
+      />
+    );
+  }
+
   return (
     <div>
-      <Quiz
-        type={question.type}
-        rest={{
-          status: "unanswered",
-          text: question.title,
-          answer: question.userAnswer,
-          handleAnswerChange(answer) {
-            dispatch(setAnswerActionCreator({ index: questionNumber, answer }));
-          },
-        }}
-      />
+      {comp}
       <button onClick={goToNextQuestion}>NEXT</button>
     </div>
   );
