@@ -1,3 +1,5 @@
+import "./boolean-quiz.scss";
+
 interface BooleanQuizNormalProps {
   text: string;
   status: "unanswered";
@@ -29,31 +31,46 @@ function BooleanQuiz(props: BooleanQuizPropsTypes) {
       data-testid="boolean-quiz"
     >
       <pre className="boolean-quiz__question">{text}</pre>
-      <div className="boolean-quiz__ans-section">
-        <label htmlFor={text + "_true"} className="boolean-quiz__ans">
-          <input
-            type="radio"
-            name={text}
-            id={text + "_true"}
-            checked={answer === true}
-            onChange={() => handleChange(true)}
-            disabled={props.status === "answered"}
-          />
-          true
-        </label>
-
-        <label htmlFor={text + "_false"} className="boolean-quiz__ans">
-          <input
-            type="radio"
-            name={text}
-            id={text + "_false"}
-            checked={answer === false}
-            onChange={() => handleChange(false)}
-            disabled={props.status === "answered"}
-          />
-          false
-        </label>
-      </div>
+      <ol className="boolean-quiz__ans-list">
+        <li className="boolean-quiz__ans-item">
+          <label
+            htmlFor={text + "_true"}
+            className={[
+              answer === true && props.status === "answered" ? "correct" : "",
+              "boolean-quiz__ans",
+            ].join(" ")}
+          >
+            <input
+              type="radio"
+              name={text}
+              id={text + "_true"}
+              checked={answer === true}
+              onChange={() => handleChange(true)}
+              disabled={props.status === "answered"}
+            />
+            true
+          </label>
+        </li>
+        <li className="boolean-quiz__ans-item">
+          <label
+            htmlFor={text + "_false"}
+            className={[
+              answer === false && props.status === "answered" ? "correct" : "",
+              "boolean-quiz__ans",
+            ].join(" ")}
+          >
+            <input
+              type="radio"
+              name={text}
+              id={text + "_false"}
+              checked={answer === false}
+              onChange={() => handleChange(false)}
+              disabled={props.status === "answered"}
+            />
+            false
+          </label>
+        </li>
+      </ol>
     </div>
   );
 }

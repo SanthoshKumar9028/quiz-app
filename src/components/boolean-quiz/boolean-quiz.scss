@@ -1,0 +1,22 @@
+@import "../../styles/components/quiz";
+
+.boolean-quiz {
+  &__ans-list {
+    @include quiz-ans-list;
+  }
+
+  &__ans-item {
+    label {
+      @include quiz-ans-lable;
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+    input[type="radio"] {
+      @include quiz-ans-radio-input;
+    }
+  }
+  &__ans-item + &__ans-item {
+    border-top: 1px solid lightgray;
+  }
+}

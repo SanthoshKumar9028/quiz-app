@@ -1,0 +1,21 @@
+@mixin quiz-ans-list($type: none) {
+  list-style-type: $type;
+  width: 90%;
+  margin: 1em auto;
+  padding: 0;
+  box-shadow: 0 2px 5px 2px lightgray;
+}
+
+@mixin quiz-ans-lable {
+  display: block;
+  padding: 0.6em 0.5em;
+  &.correct {
+    background-color: lightblue;
+  }
+}
+
+@mixin quiz-ans-radio-input {
+  width: 15px;
+  height: 15px;
+  margin-right: 0.5em;
+}

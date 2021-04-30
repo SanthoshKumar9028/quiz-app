@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import "./javascript-quiz.scss";
 import {
   setAnswerActionCreator,
   questionSelector,
   questionLengthSelector,
 } from "../../redux/javascript";
+import Header from "../../components/header";
 import BooleanQuiz from "../../components/boolean-quiz";
 import FinalizeAnswer from "../finalize-answer";
 import MultiChoiceQuiz from "../../components/multi-choice-quiz";
@@ -51,10 +53,18 @@ function JavaScriptQuizs() {
   }
 
   return (
-    <div>
-      {comp}
-      <button onClick={goToNextQuestion}>NEXT</button>
-    </div>
+    <main className="javascript-quiz">
+      <Header />
+      <section className="javascript-quiz__question container">
+        {comp}
+        <button
+          className="javascript-quiz__next-btn"
+          onClick={goToNextQuestion}
+        >
+          NEXT
+        </button>
+      </section>
+    </main>
   );
 }
 
