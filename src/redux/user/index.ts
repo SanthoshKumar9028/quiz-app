@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IState } from "../types";
 
 const userSlice = createSlice({
   name: "user",
@@ -20,5 +21,11 @@ const userSlice = createSlice({
 export const {
   incrementScoreBy: incrementScoreByActionCreator,
 } = userSlice.actions;
+
+const userScoreSelector = (state: IState) => {
+  return state.user.score;
+};
+
+export { userScoreSelector };
 
 export default userSlice.reducer;

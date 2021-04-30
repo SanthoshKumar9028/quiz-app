@@ -1,12 +1,17 @@
-import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import "./App.scss";
+import Home from "./pages/home";
 import JavaScriptQuizs from "./pages/javascript-quiz";
 
 function App() {
   return (
-    <div className="App">
-      <h2>quiz app</h2>
-      <JavaScriptQuizs />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/javascript" component={JavaScriptQuizs} />
+      </Switch>
+    </Router>
   );
 }
 
