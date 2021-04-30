@@ -32,7 +32,7 @@ function MultiChoiceQuiz(props: MultiChoiceQuizPropsTypes) {
       className={[props.status, "multi-choice-quiz"].join(" ")}
       data-testid="multi-choice-quiz"
     >
-      <p className="multi-choice-quiz__question">{text}</p>
+      <pre className="multi-choice-quiz__question">{text}</pre>
       <div className="multi-choice-quiz__ans-section">
         {options.map(({ key, value }) => (
           <label

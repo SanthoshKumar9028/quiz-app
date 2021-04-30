@@ -28,7 +28,7 @@ function BooleanQuiz(props: BooleanQuizPropsTypes) {
       className={[props.status, "boolean-quiz"].join(" ")}
       data-testid="boolean-quiz"
     >
-      <p className="boolean-quiz__question">{text}</p>
+      <pre className="boolean-quiz__question">{text}</pre>
       <div className="boolean-quiz__ans-section">
         <label htmlFor={text + "_true"} className="boolean-quiz__ans">
           <input
