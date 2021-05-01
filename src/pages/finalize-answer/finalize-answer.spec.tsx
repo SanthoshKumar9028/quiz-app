@@ -1,3 +1,5 @@
+import { fireEvent } from "@testing-library/react";
+
 import { IState } from "../../redux/types";
 import { renderWithRedux } from "../../utils/render-with-redux";
 import FinalizeAnswer from "./index";
@@ -39,17 +41,41 @@ describe("FinalizeAnswer component", () => {
     expect(document.querySelectorAll(".finalize-answer__item").length).toBe(3);
   });
 
-  it("should show the result questions", () => {
-    const { getByTestId, getAllByText } = renderWithRedux(
+  it("should not show the modal initially", () => {
+    renderWithRedux(<FinalizeAnswer language="javascript" />, {
+      initialState,
+    });
+
+    expect(document.querySelector(".ReactModalPortal")).not.toHaveTextContent(
+      "FINAL RESULT"
+    );
+  });
+
+  it("should show the modal after opening", () => {
+    const { getByTestId } = renderWithRedux(
       <FinalizeAnswer language="javascript" />,
       {
         initialState,
       }
     );
+    fireEvent.click(getByTestId("modal-opn-btn"));
+
+    expect(document.querySelector(".ReactModalPortal")).toHaveTextContent(
+      "FINAL RESULT"
+    );
     expect(getByTestId("total-questions")).toHaveTextContent("3");
     expect(getByTestId("correct-questions")).toHaveTextContent("1");
     expect(getByTestId("incorrect-questions")).toHaveTextContent("1");
     expect(getByTestId("ignored-questions")).toHaveTextContent("1");
+  });
+
+  it("should show the result questions", () => {
+    const { getAllByText } = renderWithRedux(
+      <FinalizeAnswer language="javascript" />,
+      {
+        initialState,
+      }
+    );
 
     expect(getAllByText("You ignored this question.").length).toBe(1);
   });

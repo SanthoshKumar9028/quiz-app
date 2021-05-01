@@ -1,21 +1,29 @@
 .finalize-answer {
-  margin-bottom: 3rem;
+  &__modal-cls-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 1rem;
+    border-style: outset;
+    cursor: pointer;
+  }
+  &__modal-title {
+    color: white;
+    text-align: center;
+  }
   &__stats {
     text-align: center;
-    background-color: orange;
-    min-height: 60vh;
     display: flex;
-    align-items: center;
-    padding: 1em;
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    h1 {
-      padding-top: 1em;
-      width: 300px;
-      @media screen and (min-width: 600px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    h3 {
+      width: 100%;
+      @media screen and (min-width: 500px) {
+        width: 45%;
         margin: 1rem;
       }
     }
@@ -32,8 +40,36 @@
   }
   &__list {
     padding-left: 0;
-    width: 80%;
+    width: 90%;
+    height: 75vh;
+    overflow: auto;
     font-size: 1.1rem;
+  }
+  &__controls {
+    position: sticky;
+    top: 0;
+    text-align: right;
+    margin-right: 1em;
+    @media screen and (min-width: 600px) {
+      margin-right: 3em;
+    }
+    button {
+      top: 0;
+      background-color: silver;
+      box-shadow: inset 0 -4px lime;
+      cursor: pointer;
+      position: relative;
+      border: none;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      margin-right: 0.5em;
+      transition: box-shadow 333ms, color 333ms;
+      &:hover {
+        box-shadow: inset 0 -4px #333;
+        color: lime;
+      }
+    }
   }
   &__item + &__item {
     margin-top: 1.5em;

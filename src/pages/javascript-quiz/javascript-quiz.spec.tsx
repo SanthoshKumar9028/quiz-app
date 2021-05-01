@@ -41,6 +41,10 @@ describe("JavaScriptQuiz component", () => {
     fireEvent.click(getByText("NEXT"));
     fireEvent.click(getByText("NEXT"));
 
+    fireEvent.click(getByTestId("modal-opn-btn"));
+    expect(document.querySelector(".ReactModalPortal")).toHaveTextContent(
+      "FINAL RESULT"
+    );
     expect(getByTestId("total-questions")).toHaveTextContent("2");
     expect(getByTestId("correct-questions")).toHaveTextContent("0");
     expect(getByTestId("incorrect-questions")).toHaveTextContent("0");
