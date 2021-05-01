@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.scss";
@@ -15,4 +16,4 @@ function App() {
   );
 }
 
-export default App;
+export default memo(App);

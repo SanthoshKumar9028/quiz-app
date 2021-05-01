@@ -7,7 +7,7 @@ const initialState: IState = {
     score: 0,
   },
   javascript: {
-    totalQuestions: 2,
+    totalQuestions: 3,
     questions: [
       {
         type: "QBOOLEAN",
@@ -21,29 +21,46 @@ const initialState: IState = {
         answer: false,
         userAnswer: null,
       },
+      {
+        type: "QBOOLEAN",
+        title: "test title three",
+        answer: true,
+        userAnswer: true,
+      },
     ],
   },
 };
 
 describe("FinalizeAnswer component", () => {
   it("should render", () => {
-    const { getAllByRole } = renderWithRedux(
-      <FinalizeAnswer language="javascript" />,
-      {
-        initialState,
-      }
-    );
-    expect(getAllByRole("listitem").length).toBe(2);
+    renderWithRedux(<FinalizeAnswer language="javascript" />, {
+      initialState,
+    });
+    expect(document.querySelectorAll(".finalize-answer__item").length).toBe(3);
   });
 
-  it("should counts the correct questions", () => {
-    const { getByText } = renderWithRedux(
+  it("should show the result questions", () => {
+    const { getByTestId, getAllByText } = renderWithRedux(
       <FinalizeAnswer language="javascript" />,
       {
         initialState,
       }
     );
-    expect(getByText("Incorrect Questions : 1")).toBeInTheDocument();
-    expect(getByText("Skiped Questions : 1")).toBeInTheDocument();
+    expect(getByTestId("total-questions")).toHaveTextContent("3");
+    expect(getByTestId("correct-questions")).toHaveTextContent("1");
+    expect(getByTestId("incorrect-questions")).toHaveTextContent("1");
+    expect(getByTestId("ignored-questions")).toHaveTextContent("1");
+
+    expect(getAllByText("You ignored this question.").length).toBe(1);
+  });
+
+  it("should update the score to the store", async () => {
+    const { findByText } = renderWithRedux(
+      <FinalizeAnswer language="javascript" />,
+      {
+        initialState,
+      }
+    );
+    expect(await findByText("1 ~ score")).toBeInTheDocument();
   });
 });

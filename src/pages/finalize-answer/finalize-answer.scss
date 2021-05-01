@@ -1,0 +1,54 @@
+.finalize-answer {
+  margin-bottom: 3rem;
+  &__stats {
+    text-align: center;
+    background-color: orange;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    h1 {
+      padding-top: 1em;
+      width: 300px;
+      @media screen and (min-width: 600px) {
+        margin: 1rem;
+      }
+    }
+    .quizs-nums {
+      display: block;
+      margin: 0.5em auto 0;
+      background-color: white;
+      border-radius: 50px;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 1.5rem;
+    }
+  }
+  &__list {
+    padding-left: 0;
+    width: 80%;
+    font-size: 1.1rem;
+  }
+  &__item + &__item {
+    margin-top: 1.5em;
+    border-top: 2px solid lightgray;
+  }
+  &__status {
+    margin-bottom: 0.5em;
+  }
+  &__correct {
+    color: lime;
+  }
+  &__wrong {
+    color: crimson;
+  }
+  &__info {
+    color: dodgerblue;
+  }
+}

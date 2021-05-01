@@ -34,14 +34,17 @@ describe("JavaScriptQuiz component", () => {
   });
 
   it("should show the result component", () => {
-    const { getByText } = renderWithRedux(<JavaScriptQuiz />, {
+    const { getByText, getByTestId } = renderWithRedux(<JavaScriptQuiz />, {
       initialState,
     });
 
     fireEvent.click(getByText("NEXT"));
     fireEvent.click(getByText("NEXT"));
 
-    expect(getByText("Skiped Questions : 2")).toBeInTheDocument();
+    expect(getByTestId("total-questions")).toHaveTextContent("2");
+    expect(getByTestId("correct-questions")).toHaveTextContent("0");
+    expect(getByTestId("incorrect-questions")).toHaveTextContent("0");
+    expect(getByTestId("ignored-questions")).toHaveTextContent("2");
   });
 
   it("should change the state", () => {

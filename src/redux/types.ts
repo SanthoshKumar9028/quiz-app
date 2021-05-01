@@ -8,6 +8,7 @@ export interface IBooleanQuestion {
   title: string;
   answer: boolean;
   userAnswer: null | boolean;
+  mark?: number;
 }
 
 export interface IMultipleChoiceOption {
@@ -20,6 +21,7 @@ export interface IMultipleChoiceQuestion {
   options: IMultipleChoiceOption[];
   answer: string;
   userAnswer: null | string;
+  mark?: number;
 }
 
 export type QuestionTypes = IBooleanQuestion | IMultipleChoiceQuestion;
