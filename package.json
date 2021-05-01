@@ -1,9 +1,12 @@
 {
-  "homepage": "https://SanthoshKumar9028.github.io/quiz-app",
   "name": "quiz-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.14.0",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/register": "^7.13.16",
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
@@ -13,6 +16,7 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/react-redux": "^7.1.16",
+    "ignore-styles": "^5.0.1",
     "react": "^17.0.2",
     "react-countup": "^4.3.3",
     "react-dom": "^17.0.2",
@@ -30,7 +34,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "ssr:test": "node server/index.js",
+    "ssr": "npm run build && node server/index.js",
+    "cy": "concurrently \"npm run ssr:test\" \"npm start\""
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +60,7 @@
   "devDependencies": {
     "@types/react-modal": "^3.12.0",
     "@types/react-router-dom": "^5.1.7",
+    "concurrently": "^6.0.2",
     "node-sass": "^4.12.0"
   }
 }
