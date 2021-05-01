@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { TiTick, TiRefresh, TiHome, TiDocument } from "react-icons/ti";
+import { TiTick, TiHome, TiDocument } from "react-icons/ti";
 import { ImCross, ImInfo } from "react-icons/im";
 import Modal from "react-modal";
+import CountUp from "react-countup";
 
 import "./finalize-answer.scss";
 import { resetAnswerActionCreator } from "../../redux/javascript";
@@ -27,7 +28,7 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
   const questions = useSelector(allQuestionSelector(language));
   const dispatch = useDispatch();
   const history = useHistory();
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(true);
   const closeModal = () => setModalOpen(false);
   const openModel = () => setModalOpen(true);
 
@@ -76,6 +77,9 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
           <ImCross />
         </button>
         <h2 className="finalize-answer__modal-title">FINAL RESULT</h2>
+        <h2 className="finalize-answer__modal-title">
+          SCORE ~ <CountUp end={stats.score} />
+        </h2>
         <section className="finalize-answer__stats">
           <h3 data-testid="total-questions">
             Total Questions

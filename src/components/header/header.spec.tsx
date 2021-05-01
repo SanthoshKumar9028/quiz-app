@@ -15,18 +15,17 @@ const initialState: IState = {
 };
 
 describe("Header Component", () => {
-  it("should render with initial score", async () => {
-    const { findByText } = renderWithRedux(<Header />, { initialState });
-    expect(await findByText("0 ~ score")).toBeInTheDocument();
+  it("should render with initial score", () => {
+    const { getByTestId } = renderWithRedux(<Header />, { initialState });
+    expect(getByTestId("score")).toHaveTextContent("0 ~ score");
   });
 
   it("should render with updated score", async () => {
-    const { findByText, store } = renderWithRedux(<Header />, {
+    const { getByTestId, store } = renderWithRedux(<Header />, {
       initialState,
     });
 
     store.dispatch(incrementScoreByActionCreator(5));
-    let el = await findByText("5 ~ score");
-    expect(el).toBeInTheDocument();
+    expect(getByTestId("score")).toHaveTextContent("5 ~ score");
   });
 });

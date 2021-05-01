@@ -41,24 +41,27 @@ describe("FinalizeAnswer component", () => {
     expect(document.querySelectorAll(".finalize-answer__item").length).toBe(3);
   });
 
-  it("should not show the modal initially", () => {
-    renderWithRedux(<FinalizeAnswer language="javascript" />, {
-      initialState,
-    });
-
-    expect(document.querySelector(".ReactModalPortal")).not.toHaveTextContent(
-      "FINAL RESULT"
-    );
-  });
-
-  it("should show the modal after opening", () => {
+  it("should not show the modal after clicking the close button", () => {
     const { getByTestId } = renderWithRedux(
       <FinalizeAnswer language="javascript" />,
       {
         initialState,
       }
     );
-    fireEvent.click(getByTestId("modal-opn-btn"));
+
+    fireEvent.click(getByTestId("modal-cls-btn"));
+    expect(document.querySelector(".ReactModalPortal")).not.toHaveTextContent(
+      "FINAL RESULT"
+    );
+  });
+
+  it("should show the modal initially", () => {
+    const { getByTestId } = renderWithRedux(
+      <FinalizeAnswer language="javascript" />,
+      {
+        initialState,
+      }
+    );
 
     expect(document.querySelector(".ReactModalPortal")).toHaveTextContent(
       "FINAL RESULT"
