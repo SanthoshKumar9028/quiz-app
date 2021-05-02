@@ -3,6 +3,7 @@ import { IMultipleChoiceOption } from "../../redux/types";
 import "./multi-choice-quiz.scss";
 
 interface MultiChoiceQuizNormalProps {
+  id: number;
   text: string;
   status: "unanswered";
   answer: string | null;
@@ -10,6 +11,7 @@ interface MultiChoiceQuizNormalProps {
   options: IMultipleChoiceOption[];
 }
 interface MultiChoiceQuizAnsweredProps {
+  id: number;
   text: string;
   status: "answered";
   answer: string | null;
@@ -21,7 +23,7 @@ export type MultiChoiceQuizPropsTypes =
   | MultiChoiceQuizAnsweredProps;
 
 function MultiChoiceQuiz(props: MultiChoiceQuizPropsTypes) {
-  const { text, answer, options } = props;
+  const { id, text, answer, options } = props;
 
   const handleChange = (answer: string) => {
     if (props.status === "unanswered") {
@@ -39,7 +41,7 @@ function MultiChoiceQuiz(props: MultiChoiceQuizPropsTypes) {
         {options.map(({ key, value }) => (
           <li key={key} className="multi-choice-quiz__ans-item">
             <label
-              htmlFor={text + key}
+              htmlFor={id + key}
               className={[
                 answer === value && props.status === "answered"
                   ? "correct"
@@ -49,8 +51,8 @@ function MultiChoiceQuiz(props: MultiChoiceQuizPropsTypes) {
             >
               <input
                 type="radio"
-                name={text}
-                id={text + key}
+                name={String(id)}
+                id={id + key}
                 checked={answer === value}
                 onChange={() => handleChange(value)}
                 disabled={props.status === "answered"}

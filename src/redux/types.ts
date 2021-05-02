@@ -4,6 +4,7 @@ export const QMULTI_SELECT_CHOICE = "QMULTI_SELECT_CHOICE";
 export const QFILL_IN_BLANK = "QFILL_IN_BLANK";
 
 export interface IBooleanQuestion {
+  id: number;
   type: typeof QBOOLEAN;
   title: string;
   answer: boolean;
@@ -16,6 +17,7 @@ export interface IMultipleChoiceOption {
   value: string;
 }
 export interface IMultipleChoiceQuestion {
+  id: number;
   type: typeof QMULTIPLE_CHOICE;
   title: string;
   options: IMultipleChoiceOption[];

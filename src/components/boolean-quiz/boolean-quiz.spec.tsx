@@ -6,6 +6,7 @@ describe("boolean quiz component", () => {
   it("should render without error", () => {
     const { getByTestId } = render(
       <BooleanQuiz
+        id={1}
         status="unanswered"
         text="test question"
         answer={null}
@@ -22,6 +23,7 @@ describe("boolean quiz component", () => {
 
     const { getByLabelText } = render(
       <BooleanQuiz
+        id={1}
         status="unanswered"
         text="test question"
         answer={null}
@@ -41,7 +43,12 @@ describe("boolean quiz component", () => {
   });
   it("should be disable the inputs", () => {
     const { getAllByRole } = render(
-      <BooleanQuiz status="answered" text="test question" answer={true} />
+      <BooleanQuiz
+        id={1}
+        status="answered"
+        text="test question"
+        answer={true}
+      />
     );
     const radioButtons = getAllByRole("radio");
 

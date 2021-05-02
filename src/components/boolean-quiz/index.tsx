@@ -1,12 +1,14 @@
 import "./boolean-quiz.scss";
 
 interface BooleanQuizNormalProps {
+  id: number;
   text: string;
   status: "unanswered";
   answer: boolean | null;
   handleAnswerChange(answer: boolean): void;
 }
 interface BooleanQuizAnswerdProps {
+  id: number;
   text: string;
   answer: boolean | null;
   status: "answered";
@@ -17,7 +19,7 @@ export type BooleanQuizPropsTypes =
   | BooleanQuizNormalProps;
 
 function BooleanQuiz(props: BooleanQuizPropsTypes) {
-  const { text, answer } = props;
+  const { id, text, answer } = props;
 
   const handleChange = (answer: boolean) => {
     if (props.status === "unanswered") {
@@ -34,7 +36,7 @@ function BooleanQuiz(props: BooleanQuizPropsTypes) {
       <ol className="boolean-quiz__ans-list">
         <li className="boolean-quiz__ans-item">
           <label
-            htmlFor={text + "_true"}
+            htmlFor={id + "_true"}
             className={[
               answer === true && props.status === "answered" ? "correct" : "",
               "boolean-quiz__ans",
@@ -42,8 +44,8 @@ function BooleanQuiz(props: BooleanQuizPropsTypes) {
           >
             <input
               type="radio"
-              name={text}
-              id={text + "_true"}
+              name={String(id)}
+              id={id + "_true"}
               checked={answer === true}
               onChange={() => handleChange(true)}
               disabled={props.status === "answered"}
@@ -53,7 +55,7 @@ function BooleanQuiz(props: BooleanQuizPropsTypes) {
         </li>
         <li className="boolean-quiz__ans-item">
           <label
-            htmlFor={text + "_false"}
+            htmlFor={id + "_false"}
             className={[
               answer === false && props.status === "answered" ? "correct" : "",
               "boolean-quiz__ans",
@@ -61,8 +63,8 @@ function BooleanQuiz(props: BooleanQuizPropsTypes) {
           >
             <input
               type="radio"
-              name={text}
-              id={text + "_false"}
+              name={String(id)}
+              id={id + "_false"}
               checked={answer === false}
               onChange={() => handleChange(false)}
               disabled={props.status === "answered"}
