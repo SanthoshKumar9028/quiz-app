@@ -7,8 +7,11 @@ import Modal from "react-modal";
 import CountUp from "react-countup";
 
 import "./finalize-answer.scss";
-import { resetAnswerActionCreator } from "../../redux/javascript";
-import { language, allQuestionSelector } from "../../redux";
+import {
+  language,
+  allQuestionSelector,
+  resetAnswerActionCreator,
+} from "../../redux";
 import BooleanQuiz from "../../components/boolean-quiz";
 import MultiChoiceQuiz from "../../components/multi-choice-quiz";
 import Header from "../../components/header";
@@ -56,7 +59,7 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
 
   useEffect(() => {
     dispatch(incrementScoreByActionCreator(stats.score));
-    return () => void dispatch(resetAnswerActionCreator());
+    return () => void dispatch(resetAnswerActionCreator(language)());
   }, []);
 
   return (
@@ -122,6 +125,7 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
             comp = (
               <BooleanQuiz
                 status="answered"
+                id={question.id}
                 text={question.title}
                 answer={question.answer}
               />
@@ -130,6 +134,7 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
             comp = (
               <MultiChoiceQuiz
                 status="answered"
+                id={question.id}
                 text={question.title}
                 answer={question.answer}
                 options={question.options}
@@ -137,7 +142,7 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
             );
           }
           return (
-            <li key={question.title} className="finalize-answer__item">
+            <li key={question.id} className="finalize-answer__item">
               {comp}
 
               <div className="finalize-answer__status">

@@ -1,21 +1,22 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import "./javascript-quiz.scss";
+import "./test-quizs.scss";
 import {
-  setAnswerActionCreator,
   questionSelector,
   questionLengthSelector,
-} from "../../redux/javascript";
+  setAnswerActionCreator,
+  language,
+} from "../../redux";
 import Header from "../../components/header";
 import BooleanQuiz from "../../components/boolean-quiz";
 import FinalizeAnswer from "../finalize-answer";
 import MultiChoiceQuiz from "../../components/multi-choice-quiz";
 
-function JavaScriptQuizs() {
+function TestQuizs({ language }: { language: language }) {
   const [questionNumber, setQuestionNumber] = useState<number>(0);
-  const question = useSelector(questionSelector(questionNumber));
-  const totalQuestions = useSelector(questionLengthSelector);
+  const question = useSelector(questionSelector(language, questionNumber));
+  const totalQuestions = useSelector(questionLengthSelector(language));
   const dispatch = useDispatch();
 
   const goToNextQuestion = () => {
@@ -23,11 +24,13 @@ function JavaScriptQuizs() {
   };
 
   if (questionNumber >= totalQuestions) {
-    return <FinalizeAnswer language="javascript" />;
+    return <FinalizeAnswer language={language} />;
   }
 
   const handleAnswerChange = (answer: any) => {
-    dispatch(setAnswerActionCreator({ index: questionNumber, answer }));
+    const setAnswer = setAnswerActionCreator(language);
+
+    dispatch(setAnswer({ index: questionNumber, answer }));
   };
 
   let comp = null;
@@ -35,6 +38,7 @@ function JavaScriptQuizs() {
     comp = (
       <BooleanQuiz
         status="unanswered"
+        id={question.id}
         text={question.title}
         answer={question.userAnswer}
         handleAnswerChange={handleAnswerChange}
@@ -44,6 +48,7 @@ function JavaScriptQuizs() {
     comp = (
       <MultiChoiceQuiz
         status="unanswered"
+        id={question.id}
         text={question.title}
         answer={question.userAnswer}
         options={question.options}
@@ -53,14 +58,11 @@ function JavaScriptQuizs() {
   }
 
   return (
-    <main className="javascript-quiz">
+    <main className="test-quiz">
       <Header />
-      <section className="javascript-quiz__question container">
+      <section className="test-quiz__question container">
         {comp}
-        <button
-          className="javascript-quiz__next-btn"
-          onClick={goToNextQuestion}
-        >
+        <button className="test-quiz__next-btn" onClick={goToNextQuestion}>
           NEXT
         </button>
       </section>
@@ -68,4 +70,4 @@ function JavaScriptQuizs() {
   );
 }
 
-export default JavaScriptQuizs;
+export default TestQuizs;

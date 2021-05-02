@@ -55,7 +55,7 @@ function Home() {
             This module contains ten basic questions to test your TypeScript
             knowlage.
           </p>
-          <Link to="/javascript" className="quiz-card__link">
+          <Link to="/typescript" className="quiz-card__link">
             <MdAssignment /> take test
           </Link>
         </article>

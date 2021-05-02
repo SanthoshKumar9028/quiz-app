@@ -3,14 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.scss";
 import Home from "./pages/home";
-import JavaScriptQuizs from "./pages/javascript-quiz";
+import TestQuizs from "./pages/test-quizs";
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/javascript" component={JavaScriptQuizs} />
+        <Route path="/javascript">
+          <TestQuizs language="javascript" />
+        </Route>
       </Switch>
     </Router>
   );
