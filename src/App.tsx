@@ -25,6 +25,9 @@ function App() {
         <Route path="/python">
           <TestQuizs language="python" />
         </Route>
+        <Route path="/java">
+          <TestQuizs language="java" />
+        </Route>
       </Switch>
     </Router>
   );

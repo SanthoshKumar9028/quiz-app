@@ -43,6 +43,10 @@ const initialState: IState = {
     totalQuestions: 0,
     questions: [],
   },
+  java: {
+    totalQuestions: 0,
+    questions: [],
+  },
 };
 
 describe("TestQuizs Component", () => {
