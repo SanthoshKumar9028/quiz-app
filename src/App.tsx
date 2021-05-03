@@ -19,6 +19,9 @@ function App() {
         <Route path="/javascript">
           <TestQuizs language="javascript" />
         </Route>
+        <Route path="/typescript">
+          <TestQuizs language="typescript" />
+        </Route>
       </Switch>
     </Router>
   );

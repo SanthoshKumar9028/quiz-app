@@ -14,15 +14,20 @@ import css, {
   setAnswerActionCreator as cssSetAnswerActionCreator,
   resetAnswerActionCreator as cssResetAnswerActionCreator,
 } from "./css";
+import typescript, {
+  setAnswerActionCreator as typescriptSetAnswerActionCreator,
+  resetAnswerActionCreator as typescriptResetAnswerActionCreator,
+} from "./typescript";
 
 export const reducer = combineReducers({
   user,
   javascript,
   html,
   css,
+  typescript,
 });
 
-export type language = "javascript" | "html" | "css";
+export type language = "javascript" | "html" | "css" | "typescript";
 
 const allQuestionSelector = (lang: language) => {
   return (store: IState) => {
@@ -47,6 +52,7 @@ const setAnswerMap = {
   javascript: jsSetAnswerActionCreator,
   html: htmlSetAnswerActionCreator,
   css: cssSetAnswerActionCreator,
+  typescript: typescriptSetAnswerActionCreator,
 };
 const setAnswerActionCreator = function (lang: language) {
   return setAnswerMap[lang];
@@ -57,6 +63,7 @@ const resetAnswerMap = {
   javascript: jsResetAnswerActionCreator,
   html: htmlResetAnswerActionCreator,
   css: cssResetAnswerActionCreator,
+  typescript: typescriptResetAnswerActionCreator,
 };
 const resetAnswerActionCreator = function (lang: language) {
   return resetAnswerMap[lang];
