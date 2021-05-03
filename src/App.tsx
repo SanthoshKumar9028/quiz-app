@@ -13,6 +13,9 @@ function App() {
         <Route path="/html">
           <TestQuizs language="html" />
         </Route>
+        <Route path="/css">
+          <TestQuizs language="css" />
+        </Route>
         <Route path="/javascript">
           <TestQuizs language="javascript" />
         </Route>

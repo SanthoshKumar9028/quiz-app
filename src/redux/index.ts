@@ -10,14 +10,19 @@ import html, {
   setAnswerActionCreator as htmlSetAnswerActionCreator,
   resetAnswerActionCreator as htmlResetAnswerActionCreator,
 } from "./html";
+import css, {
+  setAnswerActionCreator as cssSetAnswerActionCreator,
+  resetAnswerActionCreator as cssResetAnswerActionCreator,
+} from "./css";
 
 export const reducer = combineReducers({
   user,
   javascript,
   html,
+  css,
 });
 
-export type language = "javascript" | "html";
+export type language = "javascript" | "html" | "css";
 
 const allQuestionSelector = (lang: language) => {
   return (store: IState) => {
@@ -41,6 +46,7 @@ const questionLengthSelector = (lang: language) => {
 const setAnswerMap = {
   javascript: jsSetAnswerActionCreator,
   html: htmlSetAnswerActionCreator,
+  css: cssSetAnswerActionCreator,
 };
 const setAnswerActionCreator = function (lang: language) {
   return setAnswerMap[lang];
@@ -50,6 +56,7 @@ const setAnswerActionCreator = function (lang: language) {
 const resetAnswerMap = {
   javascript: jsResetAnswerActionCreator,
   html: htmlResetAnswerActionCreator,
+  css: cssResetAnswerActionCreator,
 };
 const resetAnswerActionCreator = function (lang: language) {
   return resetAnswerMap[lang];

@@ -4,7 +4,7 @@ import reducer, {
 } from "./index";
 import questions from "./questions";
 
-describe("html slice", () => {
+describe("css slice", () => {
   const state = {
     totalQuestions: questions.length,
     questions,

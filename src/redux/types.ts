@@ -34,4 +34,5 @@ export interface IState {
   };
   javascript: { totalQuestions: number; questions: QuestionTypes[] };
   html: { totalQuestions: number; questions: QuestionTypes[] };
+  css: { totalQuestions: number; questions: QuestionTypes[] };
 }

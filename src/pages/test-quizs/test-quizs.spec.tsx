@@ -31,6 +31,10 @@ const initialState: IState = {
     totalQuestions: 0,
     questions: [],
   },
+  css: {
+    totalQuestions: 0,
+    questions: [],
+  },
 };
 
 describe("TestQuizs Component", () => {
