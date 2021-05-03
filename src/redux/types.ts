@@ -36,4 +36,5 @@ export interface IState {
   html: { totalQuestions: number; questions: QuestionTypes[] };
   css: { totalQuestions: number; questions: QuestionTypes[] };
   typescript: { totalQuestions: number; questions: QuestionTypes[] };
+  python: { totalQuestions: number; questions: QuestionTypes[] };
 }

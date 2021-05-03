@@ -39,6 +39,10 @@ const initialState: IState = {
     totalQuestions: 0,
     questions: [],
   },
+  python: {
+    totalQuestions: 0,
+    questions: [],
+  },
 };
 
 describe("TestQuizs Component", () => {
