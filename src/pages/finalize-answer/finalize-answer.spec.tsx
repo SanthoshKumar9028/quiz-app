@@ -34,6 +34,10 @@ const initialState: IState = {
       },
     ],
   },
+  html: {
+    totalQuestions: 0,
+    questions: [],
+  },
 };
 
 describe("FinalizeAnswer component", () => {

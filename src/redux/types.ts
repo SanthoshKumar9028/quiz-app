@@ -33,4 +33,5 @@ export interface IState {
     score: number;
   };
   javascript: { totalQuestions: number; questions: QuestionTypes[] };
+  html: { totalQuestions: number; questions: QuestionTypes[] };
 }

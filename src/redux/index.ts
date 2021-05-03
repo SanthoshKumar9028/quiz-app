@@ -1,18 +1,23 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 import user from "./user";
+import { IState } from "./types";
 import javascript, {
   setAnswerActionCreator as jsSetAnswerActionCreator,
   resetAnswerActionCreator as jsResetAnswerActionCreator,
 } from "./javascript";
-import { IState } from "./types";
+import html, {
+  setAnswerActionCreator as htmlSetAnswerActionCreator,
+  resetAnswerActionCreator as htmlResetAnswerActionCreator,
+} from "./html";
 
 export const reducer = combineReducers({
   user,
   javascript,
+  html,
 });
 
-export type language = "javascript";
+export type language = "javascript" | "html";
 
 const allQuestionSelector = (lang: language) => {
   return (store: IState) => {
@@ -35,6 +40,7 @@ const questionLengthSelector = (lang: language) => {
 //setAnswer actions creators
 const setAnswerMap = {
   javascript: jsSetAnswerActionCreator,
+  html: htmlSetAnswerActionCreator,
 };
 const setAnswerActionCreator = function (lang: language) {
   return setAnswerMap[lang];
@@ -43,6 +49,7 @@ const setAnswerActionCreator = function (lang: language) {
 //reset actions creators
 const resetAnswerMap = {
   javascript: jsResetAnswerActionCreator,
+  html: htmlResetAnswerActionCreator,
 };
 const resetAnswerActionCreator = function (lang: language) {
   return resetAnswerMap[lang];

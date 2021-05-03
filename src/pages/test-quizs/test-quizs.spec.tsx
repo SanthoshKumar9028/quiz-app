@@ -27,6 +27,10 @@ const initialState: IState = {
       },
     ],
   },
+  html: {
+    totalQuestions: 0,
+    questions: [],
+  },
 };
 
 describe("TestQuizs Component", () => {

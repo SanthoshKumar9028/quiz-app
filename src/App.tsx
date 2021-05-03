@@ -10,6 +10,9 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/html">
+          <TestQuizs language="html" />
+        </Route>
         <Route path="/javascript">
           <TestQuizs language="javascript" />
         </Route>
