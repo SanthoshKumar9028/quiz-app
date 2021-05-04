@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import Home from "./pages/home";
 import TestQuizs from "./pages/test-quizs";
+import PageNotFound from "./pages/404";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route path="/java">
           <TestQuizs language="java" />
+        </Route>
+        <Route>
+          <PageNotFound />
         </Route>
       </Switch>
     </Router>
