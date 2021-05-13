@@ -1,4 +1,9 @@
-import { QuestionTypes, QBOOLEAN, QMULTIPLE_CHOICE } from "../types";
+import {
+  QuestionTypes,
+  QBOOLEAN,
+  QMULTIPLE_CHOICE,
+  QFILL_IN_BLANK,
+} from "../types";
 
 const questions: QuestionTypes[] = [
   {
@@ -107,6 +112,13 @@ const questions: QuestionTypes[] = [
   },
   {
     id: 90,
+    type: QFILL_IN_BLANK,
+    title: "HTML comments starts with <!-- and ends with",
+    answer: "-->",
+    userAnswer: null,
+  },
+  {
+    id: 100,
     type: QMULTIPLE_CHOICE,
     title:
       "The 'r', 'cx', 'cy' and 'fill' are all attributes of which of the follwing tags?",
@@ -132,7 +144,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 100,
+    id: 110,
     type: QMULTIPLE_CHOICE,
     title: "Which tag is used to make the text bold?",
     options: [
@@ -157,7 +169,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 110,
+    id: 120,
     type: QMULTIPLE_CHOICE,
     title: "Which is a valid syntax for starting tage?",
     options: [

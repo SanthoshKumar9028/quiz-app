@@ -1,4 +1,9 @@
-import { QuestionTypes, QBOOLEAN, QMULTIPLE_CHOICE } from "../types";
+import {
+  QuestionTypes,
+  QBOOLEAN,
+  QMULTIPLE_CHOICE,
+  QFILL_IN_BLANK,
+} from "../types";
 
 const questions: QuestionTypes[] = [
   {
@@ -49,6 +54,13 @@ const questions: QuestionTypes[] = [
       },
     ],
     answer: "color",
+    userAnswer: null,
+  },
+  {
+    id: 110,
+    type: QFILL_IN_BLANK,
+    title: "In CSS, ID of an element starts with",
+    answer: "#",
     userAnswer: null,
   },
   {

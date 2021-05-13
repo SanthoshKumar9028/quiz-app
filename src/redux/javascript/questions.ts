@@ -1,4 +1,9 @@
-import { QuestionTypes, QBOOLEAN, QMULTIPLE_CHOICE } from "../types";
+import {
+  QuestionTypes,
+  QBOOLEAN,
+  QMULTIPLE_CHOICE,
+  QFILL_IN_BLANK,
+} from "../types";
 
 const questions: QuestionTypes[] = [
   {
@@ -151,6 +156,14 @@ const questions: QuestionTypes[] = [
       },
     ],
     answer: "goto",
+    userAnswer: null,
+  },
+  {
+    id: 110,
+    type: QFILL_IN_BLANK,
+    title:
+      "Type only the function name which is used to call a function repeatedly in a fixed interval time.",
+    answer: "setInterval",
     userAnswer: null,
   },
 ];
