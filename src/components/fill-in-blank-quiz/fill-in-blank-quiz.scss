@@ -1,0 +1,26 @@
+.fill-in-quiz {
+  &.answered {
+    margin-bottom: 1.5em;
+  }
+  &.unanswered {
+    margin-bottom: 4em;
+  }
+  &__text-box {
+    display: block;
+    font-size: inherit;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.7);
+    padding: 0.4em;
+    margin: 2em auto;
+    outline: none;
+    &:focus {
+      border-bottom: 2px solid black;
+    }
+  }
+  @media screen and (min-width: 600px) {
+    &__text-box {
+      display: initial;
+      margin: 2em;
+    }
+  }
+}

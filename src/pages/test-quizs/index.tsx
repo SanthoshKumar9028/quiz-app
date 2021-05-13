@@ -12,6 +12,7 @@ import Header from "../../components/header";
 import BooleanQuiz from "../../components/boolean-quiz";
 import FinalizeAnswer from "../finalize-answer";
 import MultiChoiceQuiz from "../../components/multi-choice-quiz";
+import FillInBlankQuiz from "../../components/fill-in-blank-quiz";
 
 function TestQuizs({ language }: { language: language }) {
   const [questionNumber, setQuestionNumber] = useState<number>(0);
@@ -52,6 +53,16 @@ function TestQuizs({ language }: { language: language }) {
         text={question.title}
         answer={question.userAnswer}
         options={question.options}
+        handleAnswerChange={handleAnswerChange}
+      />
+    );
+  } else if (question.type === "QFILL_IN_BLANK") {
+    comp = (
+      <FillInBlankQuiz
+        status="unanswered"
+        id={question.id}
+        text={question.title}
+        answer={question.userAnswer}
         handleAnswerChange={handleAnswerChange}
       />
     );

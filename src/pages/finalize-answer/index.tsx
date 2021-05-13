@@ -14,6 +14,7 @@ import {
 } from "../../redux";
 import BooleanQuiz from "../../components/boolean-quiz";
 import MultiChoiceQuiz from "../../components/multi-choice-quiz";
+import FillInBlankQuiz from "../../components/fill-in-blank-quiz";
 import Header from "../../components/header";
 import { incrementScoreByActionCreator } from "../../redux/user";
 
@@ -138,6 +139,15 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
                 text={question.title}
                 answer={question.answer}
                 options={question.options}
+              />
+            );
+          } else if (question.type === "QFILL_IN_BLANK") {
+            comp = (
+              <FillInBlankQuiz
+                status="answered"
+                id={question.id}
+                text={question.title}
+                answer={question.userAnswer}
               />
             );
           }

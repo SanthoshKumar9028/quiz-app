@@ -26,7 +26,19 @@ export interface IMultipleChoiceQuestion {
   mark?: number;
 }
 
-export type QuestionTypes = IBooleanQuestion | IMultipleChoiceQuestion;
+export interface IFillInBlankQuestion {
+  id: number;
+  type: typeof QFILL_IN_BLANK;
+  title: string;
+  answer: string;
+  userAnswer: null | string;
+  mark?: number;
+}
+
+export type QuestionTypes =
+  | IBooleanQuestion
+  | IMultipleChoiceQuestion
+  | IFillInBlankQuestion;
 
 export interface IState {
   user: {
