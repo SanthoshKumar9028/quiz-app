@@ -2,6 +2,7 @@ import { memo, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.scss";
+import { LoadingSpinner } from "./components/loading-indicator";
 
 const Home = lazy(() => import("./pages/home"));
 const TestQuizs = lazy(() => import("./pages/test-quizs"));
@@ -10,7 +11,7 @@ const PageNotFound = lazy(() => import("./pages/404"));
 function App() {
   return (
     <Router>
-      <Suspense fallback={<p>loading...</p>}>
+      <Suspense fallback={<LoadingSpinner />}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/html">
