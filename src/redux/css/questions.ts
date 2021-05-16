@@ -3,9 +3,35 @@ import {
   QBOOLEAN,
   QMULTIPLE_CHOICE,
   QFILL_IN_BLANK,
+  QMULTI_SELECT_CHOICE,
 } from "../types";
 
 const questions: QuestionTypes[] = [
+  {
+    id: 5,
+    type: QMULTI_SELECT_CHOICE,
+    title: "Select valid properties",
+    options: [
+      {
+        key: "color",
+        value: "color",
+      },
+      {
+        key: "text-align",
+        value: "text-align",
+      },
+      {
+        key: "font-color",
+        value: "font-color",
+      },
+      {
+        key: "background",
+        value: "background",
+      },
+    ],
+    answer: ["color", "text-align", "background"],
+    userAnswer: null,
+  },
   {
     id: 10,
     type: QMULTIPLE_CHOICE,

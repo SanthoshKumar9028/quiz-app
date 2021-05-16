@@ -12,7 +12,7 @@ export interface IBooleanQuestion {
   mark?: number;
 }
 
-export interface IMultipleChoiceOption {
+export interface IChoiceOption {
   key: string;
   value: string;
 }
@@ -20,7 +20,7 @@ export interface IMultipleChoiceQuestion {
   id: number;
   type: typeof QMULTIPLE_CHOICE;
   title: string;
-  options: IMultipleChoiceOption[];
+  options: IChoiceOption[];
   answer: string;
   userAnswer: null | string;
   mark?: number;
@@ -35,10 +35,21 @@ export interface IFillInBlankQuestion {
   mark?: number;
 }
 
+export interface IMultiSelectQuestion {
+  id: number;
+  type: typeof QMULTI_SELECT_CHOICE;
+  title: string;
+  options: IChoiceOption[];
+  answer: string[];
+  userAnswer: null | string[];
+  mark?: number;
+}
+
 export type QuestionTypes =
   | IBooleanQuestion
   | IMultipleChoiceQuestion
-  | IFillInBlankQuestion;
+  | IFillInBlankQuestion
+  | IMultiSelectQuestion;
 
 export interface IState {
   user: {

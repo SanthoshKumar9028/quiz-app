@@ -1,4 +1,4 @@
-import { IMultipleChoiceOption } from "../../redux/types";
+import { IChoiceOption } from "../../redux/types";
 
 import "./multi-choice-quiz.scss";
 
@@ -8,14 +8,14 @@ interface MultiChoiceQuizNormalProps {
   status: "unanswered";
   answer: string | null;
   handleAnswerChange(answer: string): void;
-  options: IMultipleChoiceOption[];
+  options: IChoiceOption[];
 }
 interface MultiChoiceQuizAnsweredProps {
   id: number;
   text: string;
   status: "answered";
   answer: string | null;
-  options: IMultipleChoiceOption[];
+  options: IChoiceOption[];
 }
 
 export type MultiChoiceQuizPropsTypes =

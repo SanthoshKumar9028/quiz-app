@@ -15,6 +15,7 @@ import {
 import BooleanQuiz from "../../components/boolean-quiz";
 import MultiChoiceQuiz from "../../components/multi-choice-quiz";
 import FillInBlankQuiz from "../../components/fill-in-blank-quiz";
+import MultiSelectQuiz from "../../components/multi-select-quiz";
 import Header from "../../components/header";
 import { incrementScoreByActionCreator } from "../../redux/user";
 
@@ -150,21 +151,50 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
                 answer={question.userAnswer}
               />
             );
+          } else if (question.type === "QMULTI_SELECT_CHOICE") {
+            comp = (
+              <MultiSelectQuiz
+                status="answered"
+                id={question.id}
+                text={question.title}
+                answer={question.userAnswer}
+                options={question.options}
+              />
+            );
           }
+
+          let isCorrect;
+
+          if (question.type === "QMULTI_SELECT_CHOICE") {
+            if (question.answer.length !== question.userAnswer?.length) {
+              isCorrect = false;
+            } else {
+              for (let answer of question.answer) {
+                if (!question.userAnswer?.includes(answer)) {
+                  isCorrect = false;
+                  break;
+                }
+              }
+              if (typeof isCorrect === "undefined") isCorrect = true;
+            }
+          } else {
+            isCorrect = question.userAnswer === question.answer;
+          }
+
           return (
             <li key={question.id} className="finalize-answer__item">
               {comp}
 
               <div className="finalize-answer__status">
                 Correct :{" "}
-                {question.userAnswer === question.answer ? (
+                {isCorrect ? (
                   <TiTick className="finalize-answer__correct" />
                 ) : (
                   <ImCross className="finalize-answer__wrong" />
                 )}
               </div>
 
-              {question.userAnswer !== question.answer && (
+              {!isCorrect && (
                 <>
                   <div className="finalize-answer__status">
                     Correct Answer : {convertAnswer(question.answer)}

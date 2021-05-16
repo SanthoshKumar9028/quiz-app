@@ -1,4 +1,9 @@
-import { QuestionTypes, QBOOLEAN, QMULTIPLE_CHOICE } from "../types";
+import {
+  QuestionTypes,
+  QBOOLEAN,
+  QMULTIPLE_CHOICE,
+  QMULTI_SELECT_CHOICE,
+} from "../types";
 
 const questions: QuestionTypes[] = [
   {
@@ -24,6 +29,31 @@ const questions: QuestionTypes[] = [
       },
     ],
     answer: "High-level scripting language",
+    userAnswer: null,
+  },
+  {
+    id: 15,
+    type: QMULTI_SELECT_CHOICE,
+    title: "Select valid data types",
+    options: [
+      {
+        key: "int",
+        value: "int",
+      },
+      {
+        key: "str",
+        value: "str",
+      },
+      {
+        key: "double",
+        value: "double",
+      },
+      {
+        key: "char",
+        value: "char",
+      },
+    ],
+    answer: ["int", "str"],
     userAnswer: null,
   },
   {

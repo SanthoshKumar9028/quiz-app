@@ -13,6 +13,7 @@ import BooleanQuiz from "../../components/boolean-quiz";
 import FinalizeAnswer from "../finalize-answer";
 import MultiChoiceQuiz from "../../components/multi-choice-quiz";
 import FillInBlankQuiz from "../../components/fill-in-blank-quiz";
+import MultiSelectQuiz from "../../components/multi-select-quiz";
 
 function TestQuizs({ language }: { language: language }) {
   const [questionNumber, setQuestionNumber] = useState<number>(0);
@@ -63,6 +64,17 @@ function TestQuizs({ language }: { language: language }) {
         id={question.id}
         text={question.title}
         answer={question.userAnswer}
+        handleAnswerChange={handleAnswerChange}
+      />
+    );
+  } else if (question.type === "QMULTI_SELECT_CHOICE") {
+    comp = (
+      <MultiSelectQuiz
+        status="unanswered"
+        id={question.id}
+        text={question.title}
+        answer={question.userAnswer}
+        options={question.options}
         handleAnswerChange={handleAnswerChange}
       />
     );
