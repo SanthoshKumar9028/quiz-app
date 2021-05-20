@@ -56,8 +56,10 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
             }
             if (typeof isCorrect === "undefined") isCorrect = true;
           }
-          if (isCorrect === true) s.score += mark ?? 1;
-          s.correctQuestions++;
+          if (isCorrect === true) {
+            s.score += mark ?? 1;
+            s.correctQuestions++;
+          }
         }
       } else if (answer === userAnswer) {
         s.score += mark ?? 1;
