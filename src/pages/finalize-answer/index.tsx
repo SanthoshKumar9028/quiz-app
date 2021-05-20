@@ -38,10 +38,27 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
   const openModel = () => setModalOpen(true);
 
   const stats = questions.reduce(
-    (s, { answer, userAnswer, mark }) => {
+    (s, { answer, userAnswer, mark, type }) => {
       s.totalQuestions++;
       if (userAnswer === null) {
         s.ignoredQuestions++;
+      } else if (type === "QMULTI_SELECT_CHOICE") {
+        if (Array.isArray(answer) && Array.isArray(userAnswer)) {
+          let isCorrect;
+          if (answer.length !== userAnswer?.length) {
+            isCorrect = false;
+          } else {
+            for (let ans of answer) {
+              if (!userAnswer?.includes(ans)) {
+                isCorrect = false;
+                break;
+              }
+            }
+            if (typeof isCorrect === "undefined") isCorrect = true;
+          }
+          if (isCorrect === true) s.score += mark ?? 1;
+          s.correctQuestions++;
+        }
       } else if (answer === userAnswer) {
         s.score += mark ?? 1;
         s.correctQuestions++;
