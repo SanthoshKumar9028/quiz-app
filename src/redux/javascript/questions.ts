@@ -4,10 +4,11 @@ import {
   QMULTIPLE_CHOICE,
   QFILL_IN_BLANK,
 } from "../types";
+import genUniqueId from "../../utils/gen-unique-id";
 
 const questions: QuestionTypes[] = [
   {
-    id: 10,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which key word is used to desclare variale in javascript",
     answer: "let",
@@ -28,35 +29,35 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 20,
+    id: genUniqueId(),
     type: QBOOLEAN,
     title: "JavaScript is a case sensitive language.",
     answer: true,
     userAnswer: null,
   },
   {
-    id: 30,
+    id: genUniqueId(),
     type: QBOOLEAN,
     title: "JavaScript does not support int data type.",
     answer: true,
     userAnswer: null,
   },
   {
-    id: 40,
+    id: genUniqueId(),
     type: QBOOLEAN,
     title: "JavaScript will not run on browsers.",
     answer: false,
     userAnswer: null,
   },
   {
-    id: 50,
+    id: genUniqueId(),
     type: QBOOLEAN,
     title: "Variables desclared with 'const' keyword, can change it's value.",
     answer: false,
     userAnswer: null,
   },
   {
-    id: 60,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "What are the primitive data types javascript supports?",
     options: [
@@ -81,7 +82,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 70,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which tag is used to embbed javascript in HTML?",
     options: [
@@ -102,14 +103,14 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 80,
+    id: genUniqueId(),
     type: QBOOLEAN,
     title: "JavaScript don't have the ability to access HTML elements.",
     answer: false,
     userAnswer: null,
   },
   {
-    id: 90,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which symbol is used to access the property from an object?",
     options: [
@@ -134,7 +135,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 100,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which is not the valid keyword in javascript?",
     options: [
@@ -159,7 +160,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 110,
+    id: genUniqueId(),
     type: QFILL_IN_BLANK,
     title:
       "Type only the function name which is used to call a function repeatedly in a fixed interval time.",

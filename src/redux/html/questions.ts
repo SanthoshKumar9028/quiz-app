@@ -4,10 +4,11 @@ import {
   QMULTIPLE_CHOICE,
   QFILL_IN_BLANK,
 } from "../types";
+import genQuniqueId from "../../utils/gen-unique-id";
 
 const questions: QuestionTypes[] = [
   {
-    id: 10,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which tag is used to create an ordered list?",
     answer: "<ol>",
@@ -28,14 +29,14 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 20,
+    id: genQuniqueId(),
     type: QBOOLEAN,
     title: "The onclick is an event attribute of HTML.",
     answer: true,
     userAnswer: null,
   },
   {
-    id: 30,
+    id: genQuniqueId(),
     type: QBOOLEAN,
     title:
       "When assigning a value to both width and height attributes for an <img>, the value must be followed by 'px' for pixel units. Otherwise the unit will be 'cm'.",
@@ -43,7 +44,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 40,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "HTML stands for",
     options: [
@@ -68,7 +69,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 50,
+    id: genQuniqueId(),
     type: QBOOLEAN,
     title:
       "The <canvas> element can be referred by JavaScript by the id attribute.",
@@ -76,14 +77,14 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 60,
+    id: genQuniqueId(),
     type: QBOOLEAN,
     title: "HTML is a programming language.",
     answer: false,
     userAnswer: null,
   },
   {
-    id: 70,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "How many headings present in HTML",
     options: [
@@ -104,21 +105,21 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 80,
+    id: genQuniqueId(),
     type: QBOOLEAN,
     title: "We can't add an ID attribute to <body>.",
     answer: false,
     userAnswer: null,
   },
   {
-    id: 90,
+    id: genQuniqueId(),
     type: QFILL_IN_BLANK,
     title: "HTML comments starts with <!-- and ends with",
     answer: "-->",
     userAnswer: null,
   },
   {
-    id: 100,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title:
       "The 'r', 'cx', 'cy' and 'fill' are all attributes of which of the follwing tags?",
@@ -144,7 +145,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 110,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which tag is used to make the text bold?",
     options: [
@@ -169,7 +170,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 120,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which is a valid syntax for starting tage?",
     options: [

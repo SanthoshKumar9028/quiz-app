@@ -10,7 +10,7 @@ describe("multi-choice quiz component", () => {
   it("should render without error", () => {
     const { getByTestId } = render(
       <MultiChoice
-        id={1}
+        id="1"
         status="unanswered"
         text="test question"
         answer={null}
@@ -28,7 +28,7 @@ describe("multi-choice quiz component", () => {
 
     const { getAllByRole } = render(
       <MultiChoice
-        id={1}
+        id="1"
         status="unanswered"
         text="test question"
         answer={null}
@@ -50,7 +50,7 @@ describe("multi-choice quiz component", () => {
   it("should be disable the inputs", () => {
     const { getAllByRole } = render(
       <MultiChoice
-        id={1}
+        id="1"
         text="test question"
         status="answered"
         answer="test"

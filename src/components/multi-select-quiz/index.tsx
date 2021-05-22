@@ -4,7 +4,7 @@ import { IChoiceOption } from "../../redux/types";
 import "./multi-select-quiz.scss";
 
 interface MultiSelectQuizNormalProps {
-  id: number;
+  id: string;
   text: string;
   status: "unanswered";
   answer: null | string[];
@@ -12,7 +12,7 @@ interface MultiSelectQuizNormalProps {
   options: IChoiceOption[];
 }
 interface MultiSelectQuizAnsweredProps {
-  id: number;
+  id: string;
   text: string;
   status: "answered";
   answer: null | string[];
@@ -69,7 +69,7 @@ function MultiSelectQuiz(props: MultiSelectQuizPropsTypes) {
             >
               <input
                 type="checkbox"
-                name={String(id)}
+                name={id}
                 id={id + key}
                 checked={!!(answer && answer.includes(value))}
                 onChange={handleChangeFor(value)}

@@ -6,7 +6,7 @@ describe("fill-in-quiz component", () => {
   it("should render without error", () => {
     const { getByTestId, getByRole } = render(
       <FillInBlankQuiz
-        id={1}
+        id="1"
         status="unanswered"
         text="test question"
         answer={null}
@@ -24,7 +24,7 @@ describe("fill-in-quiz component", () => {
 
     const { getByRole } = render(
       <FillInBlankQuiz
-        id={1}
+        id="1"
         status="unanswered"
         text="test question"
         answer={null}
@@ -46,7 +46,7 @@ describe("fill-in-quiz component", () => {
   it("should be disable the inputs", () => {
     render(
       <FillInBlankQuiz
-        id={1}
+        id="1"
         status="answered"
         text="test question"
         answer="correct answer"

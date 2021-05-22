@@ -12,14 +12,14 @@ const initialState: IState = {
     totalQuestions: 2,
     questions: [
       {
-        id: 1,
+        id: "1",
         type: "QBOOLEAN",
         title: "test title one",
         answer: true,
         userAnswer: null,
       },
       {
-        id: 2,
+        id: "2",
         type: "QBOOLEAN",
         title: "test title two",
         answer: false,

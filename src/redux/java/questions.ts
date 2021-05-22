@@ -1,8 +1,9 @@
 import { QuestionTypes, QBOOLEAN, QMULTIPLE_CHOICE } from "../types";
+import genQuniqueId from "../../utils/gen-unique-id";
 
 const questions: QuestionTypes[] = [
   {
-    id: 10,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which of the following is not a Java features?",
     options: [
@@ -27,14 +28,14 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 20,
+    id: genQuniqueId(),
     type: QBOOLEAN,
     title: "Java files ends with an extention .java",
     answer: true,
     userAnswer: null,
   },
   {
-    id: 30,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title:
       "What is the return type of the hashCode() method in the Object class?",
@@ -60,7 +61,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 40,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "_____ is used to find and fix bugs in the Java programs.",
     options: [
@@ -85,7 +86,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 50,
+    id: genQuniqueId(),
     type: QBOOLEAN,
     title:
       "The default value of a static integer variable of a class in Java is 0",
@@ -93,7 +94,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 60,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title:
       "In which memory a String is stored, when we create a string using new operator?",
@@ -119,7 +120,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 70,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which keyword is used for accessing the features of a package?",
     options: [
@@ -144,7 +145,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 80,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "In java, jar stands for",
     options: [
@@ -169,7 +170,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 90,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which of the following is a mutable class in java?",
     options: [
@@ -194,7 +195,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 100,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title:
       "Which of the following modifiers can be used for a variable so that it can be accessed by any thread or a part of a program?",

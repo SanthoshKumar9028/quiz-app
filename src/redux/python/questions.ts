@@ -4,10 +4,11 @@ import {
   QMULTIPLE_CHOICE,
   QMULTI_SELECT_CHOICE,
 } from "../types";
+import genUniqueId from "../../utils/gen-unique-id";
 
 const questions: QuestionTypes[] = [
   {
-    id: 10,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Python is a",
     options: [
@@ -32,7 +33,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 15,
+    id: genUniqueId(),
     type: QMULTI_SELECT_CHOICE,
     title: "Select valid data types",
     options: [
@@ -57,7 +58,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 20,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which one of the following has the same precedence level?",
     options: [
@@ -82,7 +83,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 30,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title:
       "Which of the following words cannot be used as a variable name in python?",
@@ -108,14 +109,14 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 40,
+    id: genUniqueId(),
     type: QBOOLEAN,
     title: "Set members must not be hashable.",
     answer: false,
     userAnswer: null,
   },
   {
-    id: 50,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which of the following is not a keyword in Python language?",
     options: [
@@ -140,14 +141,14 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 60,
+    id: genUniqueId(),
     type: QBOOLEAN,
     title: "Lambda is a statement.",
     answer: false,
     userAnswer: null,
   },
   {
-    id: 70,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "What is the maximum possible length of an identifier?",
     options: [
@@ -172,14 +173,14 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 80,
+    id: genUniqueId(),
     type: QBOOLEAN,
     title: "Python supports multi-line comments",
     answer: false,
     userAnswer: null,
   },
   {
-    id: 90,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "What is the method inside the class in python language?",
     options: [
@@ -204,7 +205,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 100,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "The format function, when it applied on a string returns",
     options: [

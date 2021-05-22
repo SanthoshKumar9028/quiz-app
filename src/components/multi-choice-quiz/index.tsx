@@ -3,7 +3,7 @@ import { IChoiceOption } from "../../redux/types";
 import "./multi-choice-quiz.scss";
 
 interface MultiChoiceQuizNormalProps {
-  id: number;
+  id: string;
   text: string;
   status: "unanswered";
   answer: string | null;
@@ -11,7 +11,7 @@ interface MultiChoiceQuizNormalProps {
   options: IChoiceOption[];
 }
 interface MultiChoiceQuizAnsweredProps {
-  id: number;
+  id: string;
   text: string;
   status: "answered";
   answer: string | null;
@@ -51,7 +51,7 @@ function MultiChoiceQuiz(props: MultiChoiceQuizPropsTypes) {
             >
               <input
                 type="radio"
-                name={String(id)}
+                name={id}
                 id={id + key}
                 checked={answer === value}
                 onChange={() => handleChange(value)}

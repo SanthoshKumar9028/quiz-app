@@ -1,8 +1,9 @@
 import { QuestionTypes, QBOOLEAN, QMULTIPLE_CHOICE } from "../types";
+import genUniqueId from "../../utils/gen-unique-id";
 
 const questions: QuestionTypes[] = [
   {
-    id: 10,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which are the different Data Types supported by Typescript?",
     options: [
@@ -27,7 +28,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 20,
+    id: genUniqueId(),
     type: QBOOLEAN,
     title:
       "The preserve mode will keep the JSX as part of the output to be further consumed by another transform step.",
@@ -35,7 +36,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 30,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "What are the variable scopes available in TypeScript?",
     options: [
@@ -60,7 +61,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 40,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which object oriented terms are supported by Typescript?",
     options: [
@@ -85,7 +86,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 50,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "When was the first time TypeScript was made public?",
     options: [
@@ -110,7 +111,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 60,
+    id: genUniqueId(),
     type: QBOOLEAN,
     title:
       "TypeScript supports public, protected and private access modifiers.",
@@ -118,7 +119,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 70,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which one is the correct TypeScript file extention?",
     options: [
@@ -143,7 +144,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 80,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which one is the correct way to specify data type?",
     options: [
@@ -164,14 +165,14 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 90,
+    id: genUniqueId(),
     type: QBOOLEAN,
     title: "TypeScript supports 'any' datatype.",
     answer: true,
     userAnswer: null,
   },
   {
-    id: 100,
+    id: genUniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "TypeScript is compiled into which of the follwing language?",
     options: [

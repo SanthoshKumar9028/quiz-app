@@ -1,14 +1,14 @@
 import "./boolean-quiz.scss";
 
 interface BooleanQuizNormalProps {
-  id: number;
+  id: string;
   text: string;
   status: "unanswered";
   answer: boolean | null;
   handleAnswerChange(answer: boolean): void;
 }
 interface BooleanQuizAnswerdProps {
-  id: number;
+  id: string;
   text: string;
   answer: boolean | null;
   status: "answered";
@@ -44,7 +44,7 @@ function BooleanQuiz(props: BooleanQuizPropsTypes) {
           >
             <input
               type="radio"
-              name={String(id)}
+              name={id}
               id={id + "_true"}
               checked={answer === true}
               onChange={() => handleChange(true)}
@@ -63,7 +63,7 @@ function BooleanQuiz(props: BooleanQuizPropsTypes) {
           >
             <input
               type="radio"
-              name={String(id)}
+              name={id}
               id={id + "_false"}
               checked={answer === false}
               onChange={() => handleChange(false)}

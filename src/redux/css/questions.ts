@@ -5,10 +5,11 @@ import {
   QFILL_IN_BLANK,
   QMULTI_SELECT_CHOICE,
 } from "../types";
+import genQuniqueId from "../../utils/gen-unique-id";
 
 const questions: QuestionTypes[] = [
   {
-    id: 5,
+    id: genQuniqueId(),
     type: QMULTI_SELECT_CHOICE,
     title: "Select valid properties",
     options: [
@@ -33,7 +34,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 10,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "CSS stands for",
     options: [
@@ -58,7 +59,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 20,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which property is used to change the color of the text",
     options: [
@@ -83,14 +84,14 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 110,
+    id: genQuniqueId(),
     type: QFILL_IN_BLANK,
     title: "In CSS, ID of an element starts with",
     answer: "#",
     userAnswer: null,
   },
   {
-    id: 30,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which HTML tage is used to add style?",
     options: [
@@ -115,14 +116,14 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 40,
+    id: genQuniqueId(),
     type: QBOOLEAN,
     title: "margin properties can accept negative values.",
     answer: true,
     userAnswer: null,
   },
   {
-    id: 50,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title:
       "Which place is prefered by the community to add styles in HTML document?",
@@ -144,7 +145,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 60,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "Which tag is used to link the external style sheets",
     options: [
@@ -169,21 +170,21 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 70,
+    id: genQuniqueId(),
     type: QBOOLEAN,
     title: "A website can have only one external style sheet",
     answer: false,
     userAnswer: null,
   },
   {
-    id: 80,
+    id: genQuniqueId(),
     type: QBOOLEAN,
     title: "We can use variables in style sheet.",
     answer: true,
     userAnswer: null,
   },
   {
-    id: 90,
+    id: genQuniqueId(),
     type: QMULTIPLE_CHOICE,
     title: "What are the values can be used in position property?",
     options: [
@@ -208,7 +209,7 @@ const questions: QuestionTypes[] = [
     userAnswer: null,
   },
   {
-    id: 100,
+    id: genQuniqueId(),
     type: QBOOLEAN,
     title: "Styles of an HTML element can be changed by JavaScript.",
     answer: true,

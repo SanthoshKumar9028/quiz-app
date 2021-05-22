@@ -9,11 +9,8 @@ import {
   language,
 } from "../../redux";
 import Header from "../../components/header";
-import BooleanQuiz from "../../components/boolean-quiz";
 import FinalizeAnswer from "../finalize-answer";
-import MultiChoiceQuiz from "../../components/multi-choice-quiz";
-import FillInBlankQuiz from "../../components/fill-in-blank-quiz";
-import MultiSelectQuiz from "../../components/multi-select-quiz";
+import { Question } from "../../utils/questions-class";
 
 function TestQuizs({ language }: { language: language }) {
   const [questionNumber, setQuestionNumber] = useState<number>(0);
@@ -35,56 +32,11 @@ function TestQuizs({ language }: { language: language }) {
     dispatch(setAnswer({ index: questionNumber, answer }));
   };
 
-  let comp = null;
-  if (question.type === "QBOOLEAN") {
-    comp = (
-      <BooleanQuiz
-        status="unanswered"
-        id={question.id}
-        text={question.title}
-        answer={question.userAnswer}
-        handleAnswerChange={handleAnswerChange}
-      />
-    );
-  } else if (question.type === "QMULTIPLE_CHOICE") {
-    comp = (
-      <MultiChoiceQuiz
-        status="unanswered"
-        id={question.id}
-        text={question.title}
-        answer={question.userAnswer}
-        options={question.options}
-        handleAnswerChange={handleAnswerChange}
-      />
-    );
-  } else if (question.type === "QFILL_IN_BLANK") {
-    comp = (
-      <FillInBlankQuiz
-        status="unanswered"
-        id={question.id}
-        text={question.title}
-        answer={question.userAnswer}
-        handleAnswerChange={handleAnswerChange}
-      />
-    );
-  } else if (question.type === "QMULTI_SELECT_CHOICE") {
-    comp = (
-      <MultiSelectQuiz
-        status="unanswered"
-        id={question.id}
-        text={question.title}
-        answer={question.userAnswer}
-        options={question.options}
-        handleAnswerChange={handleAnswerChange}
-      />
-    );
-  }
-
   return (
     <main className="test-quiz">
       <Header />
       <section className="test-quiz__question container">
-        {comp}
+        {Question.renderInUnAnsweredMode(question, { handleAnswerChange })}
         <button className="test-quiz__next-btn" onClick={goToNextQuestion}>
           NEXT
         </button>

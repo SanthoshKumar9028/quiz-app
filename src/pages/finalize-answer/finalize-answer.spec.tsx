@@ -12,21 +12,21 @@ const initialState: IState = {
     totalQuestions: 3,
     questions: [
       {
-        id: 1,
+        id: "1",
         type: "QBOOLEAN",
         title: "test title one",
         answer: true,
         userAnswer: false,
       },
       {
-        id: 2,
+        id: "2",
         type: "QBOOLEAN",
         title: "test title two",
         answer: false,
         userAnswer: null,
       },
       {
-        id: 3,
+        id: "3",
         type: "QBOOLEAN",
         title: "test title three",
         answer: true,

@@ -12,12 +12,9 @@ import {
   allQuestionSelector,
   resetAnswerActionCreator,
 } from "../../redux";
-import BooleanQuiz from "../../components/boolean-quiz";
-import MultiChoiceQuiz from "../../components/multi-choice-quiz";
-import FillInBlankQuiz from "../../components/fill-in-blank-quiz";
-import MultiSelectQuiz from "../../components/multi-select-quiz";
 import Header from "../../components/header";
 import { incrementScoreByActionCreator } from "../../redux/user";
+import { Question } from "../../utils/questions-class";
 
 export interface IFinalizeAnswerProps {
   language: language;
@@ -38,31 +35,12 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
   const openModel = () => setModalOpen(true);
 
   const stats = questions.reduce(
-    (s, { answer, userAnswer, mark, type }) => {
+    (s, q) => {
       s.totalQuestions++;
-      if (userAnswer === null) {
+      if (Question.isNotAnswered(q)) {
         s.ignoredQuestions++;
-      } else if (type === "QMULTI_SELECT_CHOICE") {
-        if (Array.isArray(answer) && Array.isArray(userAnswer)) {
-          let isCorrect;
-          if (answer.length !== userAnswer?.length) {
-            isCorrect = false;
-          } else {
-            for (let ans of answer) {
-              if (!userAnswer?.includes(ans)) {
-                isCorrect = false;
-                break;
-              }
-            }
-            if (typeof isCorrect === "undefined") isCorrect = true;
-          }
-          if (isCorrect === true) {
-            s.score += mark ?? 1;
-            s.correctQuestions++;
-          }
-        }
-      } else if (answer === userAnswer) {
-        s.score += mark ?? 1;
+      } else if (Question.isCorrect(q)) {
+        s.score += q.mark ?? 1;
         s.correctQuestions++;
       } else {
         s.incorrectQuestions++;
@@ -81,6 +59,7 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
   useEffect(() => {
     dispatch(incrementScoreByActionCreator(stats.score));
     return () => void dispatch(resetAnswerActionCreator(language)());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -141,79 +120,20 @@ function FinalizeAnswer({ language }: IFinalizeAnswerProps) {
       </div>
       <ol className="finalize-answer__list container">
         {questions.map((question) => {
-          let comp = null;
-          if (question.type === "QBOOLEAN") {
-            comp = (
-              <BooleanQuiz
-                status="answered"
-                id={question.id}
-                text={question.title}
-                answer={question.answer}
-              />
-            );
-          } else if (question.type === "QMULTIPLE_CHOICE") {
-            comp = (
-              <MultiChoiceQuiz
-                status="answered"
-                id={question.id}
-                text={question.title}
-                answer={question.answer}
-                options={question.options}
-              />
-            );
-          } else if (question.type === "QFILL_IN_BLANK") {
-            comp = (
-              <FillInBlankQuiz
-                status="answered"
-                id={question.id}
-                text={question.title}
-                answer={question.userAnswer}
-              />
-            );
-          } else if (question.type === "QMULTI_SELECT_CHOICE") {
-            comp = (
-              <MultiSelectQuiz
-                status="answered"
-                id={question.id}
-                text={question.title}
-                answer={question.userAnswer}
-                options={question.options}
-              />
-            );
-          }
-
-          let isCorrect;
-
-          if (question.type === "QMULTI_SELECT_CHOICE") {
-            if (question.answer.length !== question.userAnswer?.length) {
-              isCorrect = false;
-            } else {
-              for (let answer of question.answer) {
-                if (!question.userAnswer?.includes(answer)) {
-                  isCorrect = false;
-                  break;
-                }
-              }
-              if (typeof isCorrect === "undefined") isCorrect = true;
-            }
-          } else {
-            isCorrect = question.userAnswer === question.answer;
-          }
-
           return (
             <li key={question.id} className="finalize-answer__item">
-              {comp}
+              {Question.renderInAnsweredMode(question)}
 
               <div className="finalize-answer__status">
                 Correct :{" "}
-                {isCorrect ? (
+                {Question.isCorrect(question) ? (
                   <TiTick className="finalize-answer__correct" />
                 ) : (
                   <ImCross className="finalize-answer__wrong" />
                 )}
               </div>
 
-              {!isCorrect && (
+              {!Question.isCorrect(question) && (
                 <>
                   <div className="finalize-answer__status">
                     Correct Answer : {convertAnswer(question.answer)}

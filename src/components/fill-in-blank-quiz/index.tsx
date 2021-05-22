@@ -3,14 +3,14 @@ import { useEffect, useRef } from "react";
 import "./fill-in-blank-quiz.scss";
 
 interface FillInQuizNormalProps {
-  id: number;
+  id: string;
   text: string;
   status: "unanswered";
   answer: string | null;
   handleAnswerChange(answer: string): void;
 }
 interface FillInQuizAnswerdProps {
-  id: number;
+  id: string;
   text: string;
   answer: string | null;
   status: "answered";
@@ -44,7 +44,7 @@ function FillInQuiz(props: FillInQuizPropsTypes) {
       <input
         ref={(element) => (inputRef.current = element)}
         type="text"
-        name={String(id)}
+        name={id}
         value={answer || ""}
         onChange={(e) => handleChange(e.target.value)}
         disabled={props.status === "answered"}
